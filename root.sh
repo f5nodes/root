@@ -1,5 +1,5 @@
 #!/bin/bash
-[[ "$0" == "$BASH_SOURCE" ]] && ret=exit || ret=return
+# [[ "$0" == "$BASH_SOURCE" ]] && ret=exit || ret=return
 # DEFAULT VARS & FUNCS
 languages="en uk"
 language="en"
@@ -22,13 +22,13 @@ confirm() {
 if [ -z "$1" ]; then
 	echo -e  "\n\e[91mERROR: Enter a node name as a first argument!\e[0m"
 	echo -e  "\e[91mERROR: Example: \e[4mbash $0 <node name> <language> (optional)\e[0m\n"
-	$ret 1
+	exit 0
 fi
 # ARG 2: if language is provided by user
 [ -n "$2" ] && language=${2,,}
 if !(echo "$languages" | fgrep -q -w "$language"); then
 	echo -e "\n\e[91mLanguage is not supported, you can make a pull request with here - \e[4mgithub.com/f5nodes/$1\e[0m\n"
-	$ret 1
+	exit 0
 fi
 
 if wget -q --spider $link; then
