@@ -9,7 +9,7 @@ confirm() {
     read -r -p "${1:-Continue? [y/n]} " response
     echo -e "\e[0m"
     case "$response" in
-        [yY][eE][sS]|[yY]) 
+        [yY][eE][sS]|[yY])
             true
             ;;
         *)
@@ -26,7 +26,7 @@ if [ -z "$1" ]; then
 fi
 # ARG 2: if language is provided by user
 [ -n "$2" ] && language=${2,,}
-if !(echo "$languages"  | fgrep -q -w "$language"); then
+if !(echo "$languages" | fgrep -q -w "$language"); then
 	echo -e "\n\e[91mLanguage is not supported, you can make a pull request with here - \e[4mgithub.com/f5nodes/$1\e[0m\n"
 	$ret 1
 fi
