@@ -27,13 +27,13 @@ fi
 # ARG 2: if language is provided by user
 [ -n "$2" ] && language=${2,,}
 if !(echo "$languages"  | fgrep -q -w "$language"); then
-	echo -e "\e[91mLanguage is not supported, you can make a pull request with here - \e[4mgithub.com/f5nodes/$1\e[0m\n"
+	echo -e "\n\e[91mLanguage is not supported, you can make a pull request with here - \e[4mgithub.com/f5nodes/$1\e[0m\n"
 	exit 1
 fi
 
 if wget -q --spider $link; then
 	echo -e "\n\e[93mYou select installing the node \e[92m${1^} \e[93mwith \e[92m${language^^} \e[93mlanguage!\e[0m"
-	confirm $'\e[93mContinue?\e[92m' && wget -qO- $link | bash -s $language
+	confirm && wget -qO- $link | bash -s $language
 else
 	echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
 	echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m\n"
