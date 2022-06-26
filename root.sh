@@ -34,12 +34,12 @@ if ! echo "$languages" | grep -Fqw "$language"; then
 fi
 
 if wget -q --spider $script_link; then
-    echo -e "\n\e[93mYou select installing the node \e[92m${1^} \e[93mwith \e[92m${language^^} \e[93mlanguage!\e[0m"
     if wget -q --spider $logo_link; then
         . <(wget -qO- $logo_link)
     else
         . <(wget -qO- $logo_link_d)
     fi
+    echo -e "\n\e[93mYou select installing the node \e[92m${1^} \e[93mwith \e[92m${language^^} \e[93mlanguage!\e[0m"
     confirm && . <(wget -qO- $script_link) $language
 else
     echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
