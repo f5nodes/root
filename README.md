@@ -1,11 +1,25 @@
-# root
+# root > f5.sh
 
-Script, that helps you to install your node in one line.  
-List of available nodes: here
+script, that helps you to install your node in one line.  
+list of available nodes see [here](https://github.com/f5nodes).
 
----
+## usage
 
-## Start
+```sh
+. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/f5.sh) [name] [language]
+```
 
-To start with, just run the following in your Terminal:  
-`bash <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/root.sh)`
+arguments:
+
+-  **[name]** - name of node you want to install \*
+-  **[language]** - language of script interface (optional, _**en** by default_)
+
+### example
+
+```sh
+. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/root.sh) subspace uk
+```
+
+will install **Subspace** node using **uk** language.
+
+## links
