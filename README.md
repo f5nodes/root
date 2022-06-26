@@ -11,13 +11,13 @@ list of available nodes see [here](https://github.com/f5nodes).
 
 arguments:
 
--  **[name]** - name of node you want to install \*
--  **[language]** - language of script interface (optional, _**en** by default_)
+-  **[name] \*** - name of node you want to install
+-  **[language]** - language of script interface (_**en** by default_)
 
-### example
+## example
 
 ```sh
-. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/root.sh) subspace uk
+. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/f5.sh) subspace uk
 ```
 
 will install **Subspace** node using **uk** language.
