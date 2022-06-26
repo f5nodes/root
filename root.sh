@@ -2,7 +2,9 @@
 # DEFAULT VARS & FUNCS
 languages="en uk"
 language="en"
-link="https://raw.githubusercontent.com/f5nodes/$1/main/setup.sh"
+script_link="https://raw.githubusercontent.com/f5nodes/$1/main/setup.sh"
+logo_link="https://raw.githubusercontent.com/f5nodes/root/main/logo/$3.sh"
+logo_link_d="https://raw.githubusercontent.com/f5nodes/root/main/logo/logo.sh"
 confirm() {
     read -r -p "${1:-Continue? [y/n]} " response
     case "$response" in
@@ -31,10 +33,14 @@ if ! echo "$languages" | grep -Fqw "$language"; then
     return 1 2>/dev/null; exit 1
 fi
 
-if wget -q --spider $link; then
+if wget -q --spider $script_link; then
     echo -e "\n\e[93mYou select installing the node \e[92m${1^} \e[93mwith \e[92m${language^^} \e[93mlanguage!\e[0m"
-    confirm && . <(wget -qO- $link) $language
-    # confirm $'\e[93mContinue?\e[92m' && wget -qO- $link | bash -s $language
+    if wget -q --spider $logo_link; then
+        . <(wget -qO- $logo_link)
+    else
+        . <(wget -qO- $logo_link_d)
+    fi
+    confirm && . <(wget -qO- $script_link) $language
 else
     echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
     echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m\n"
