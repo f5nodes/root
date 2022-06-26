@@ -1,6 +1,5 @@
 #!/bin/bash
 # DEFAULT VARS & FUNCS
-set -x
 languages="en uk"
 language="en"
 link="https://raw.githubusercontent.com/f5nodes/$1/main/setup.sh"
@@ -41,4 +40,3 @@ else
     echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m\n"
     return 1 2>/dev/null; exit 1
 fi
-set +x
