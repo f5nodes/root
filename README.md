@@ -6,7 +6,7 @@ list of available nodes see [here](https://github.com/f5nodes).
 ## usage
 
 ```sh
-. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/f5.sh) [name] [language]
+. <(wget -qO- sh.f5nodes.com) [name] [language]
 ```
 
 arguments:
@@ -17,9 +17,11 @@ arguments:
 ## example
 
 ```sh
-. <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/f5.sh) subspace uk
+. <(wget -qO- sh.f5nodes.com) subspace uk
 ```
 
 will install **Subspace** node using **ukrainian** language.
 
 ## links
+
+[f5nodes.com](https://f5nodes.com)
