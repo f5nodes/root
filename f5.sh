@@ -1,10 +1,17 @@
 #!/bin/bash
-# DEFAULT VARS & FUNCS
+# Script to install any node:
+# . <(wget -qO- sh.f5nodes.com) [name]* [language]
+#
+# See instructions here:
+# github.com/f5nodes
+
+# Default vars & funcs
 languages="en uk"
 language="en"
 script_link="https://raw.githubusercontent.com/f5nodes/$1/main/setup.sh"
 logo_link="https://raw.githubusercontent.com/f5nodes/root/main/logo/$3.sh"
 logo_link_d="https://raw.githubusercontent.com/f5nodes/root/main/logo/logo.sh"
+available_nodes="https://raw.githubusercontent.com/f5nodes/root/main/AVAILABLE.md"
 confirm() {
     read -r -p "${1:-Continue? [y/n]} " response
     case "$response" in
@@ -33,6 +40,7 @@ if ! echo "$languages" | grep -Fqw "$language"; then
     return 1 2>/dev/null; exit 1
 fi
 
+# script execute 
 if wget -q --spider $script_link; then
     if wget -q --spider $logo_link; then
         . <(wget -qO- $logo_link)
@@ -43,6 +51,8 @@ if wget -q --spider $script_link; then
     confirm && . <(wget -qO- $script_link) $language
 else
     echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
-    echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m\n"
+    echo -e  "\e[91mERROR: Available nodes see here or below: \e[4mgithub.com/f5nodes\e[0m\n"
+    . <(wget -qO- $available_nodes)
+    echo
     return 1 2>/dev/null; exit 1
 fi
