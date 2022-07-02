@@ -52,6 +52,6 @@ if wget -q --spider $script_link; then
 else
     echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
     echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m"
-    confirm 'See available nodes list? [y/n] ' && . <(wget -qO- $available_nodes)
+    confirm 'See available nodes list? [y/n]' && . <(wget -qO- $available_nodes)
     return 1 2>/dev/null; exit 1
 fi
