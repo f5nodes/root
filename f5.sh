@@ -26,7 +26,7 @@ confirm() {
 
 # ARG 1: if node name is empty
 if [ -z "$1" ]; then
-    echo -e  "\n\e[91mUSAGE: \e[4m. <(wget -qO- sh.f5nodes.com) [name]* [language]\e[0m"
+    echo -e  "\n\e[91mUSAGE: . <(wget -qO- sh.f5nodes.com) [name]* [language]\e[0m"
     . <(wget -qO- $available_nodes)
     return 1 2>/dev/null; exit 1
 fi
