@@ -26,8 +26,8 @@ confirm() {
 
 # ARG 1: if node name is empty
 if [ -z "$1" ]; then
-    echo -e  "\e[91mUSAGE: \e[4m. <(wget -qO- sh.f5nodes.com) [name]* [language]\e[0m"
-    wget -qO- $available_nodes
+    echo -e  "\n\e[91mUSAGE: \e[4m. <(wget -qO- sh.f5nodes.com) [name]* [language]\e[0m"
+    . <(wget -qO- $available_nodes)
     return 1 2>/dev/null; exit 1
 fi
 
@@ -52,6 +52,6 @@ if wget -q --spider $script_link; then
 else
     echo -e  "\n\e[91mERROR: This node doesn't exist!\e[0m"
     echo -e  "\e[91mERROR: Available nodes: \e[4mgithub.com/f5nodes\e[0m"
-    confirm 'See available nodes list? [y/n] ' && wget -qO- $available_nodes
+    confirm 'See available nodes list? [y/n] ' && . <(wget -qO- $available_nodes)
     return 1 2>/dev/null; exit 1
 fi
