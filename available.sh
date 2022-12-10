@@ -10,4 +10,5 @@ echo -e "\e[92msubspace: \e[93minstall\e[0m"
 echo -e "\e[92mobol: \e[93mget enr key\e[0m"
 echo -e "\e[92msui: \e[93minstall, update\e[0m"
 echo -e "\e[92mgear: \e[93minstall, update\e[0m"
+echo -e "\e[92mbundlr: \e[93minstall\e[0m"
 echo
