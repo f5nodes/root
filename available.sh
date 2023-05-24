@@ -1,16 +1,17 @@
 #!/bin/bash
 
-echo -e "\n\e[92mAvailable nodes:\e[0m"
-echo -e "\e[92maptos: \e[93minstall\e[0m"
-echo -e "\e[92mironfish: \e[93minstall, update, delete\e[0m"
-echo -e "\e[92mmasa: \e[93minstall\e[0m"
-echo -e "\e[92mmassa: \e[93minstall\e[0m"
-echo -e "\e[92mstarknet: \e[93minstall, update, auto clear DB script\e[0m"
-echo -e "\e[92msubspace: \e[93minstall\e[0m"
-echo -e "\e[92mobol: \e[93mget enr key\e[0m"
-echo -e "\e[92msui: \e[93minstall, update\e[0m"
-echo -e "\e[92mgear: \e[93minstall, update\e[0m"
-echo -e "\e[92mbundlr: \e[93minstall\e[0m"
-echo -e "\e[92mmanta: \e[93mtrusted setup install\e[0m"
-echo -e "\n\e[92mf5checker: \e[93minstall\e[0m"
-echo
+repositories=$(curl -s https://api.github.com/orgs/f5nodes/repos?sort=full_name | jq -r '.[].name')
+exclude="root wiki"
+
+echo "┌───────────────────────┐"
+echo "│       Available       │"
+echo "│     Nodes & Tools     │"
+echo "├───────────────────────┤"
+
+while IFS= read -r repo_name; do
+  if ! echo "$exclude" | grep -Fqw "$repo_name"; then
+    printf "│ %-20s  │\n" "$repo_name"
+  fi
+done <<< "$repositories" | grep -vE '^[[:space:]]*$'
+
+echo "└───────────────────────┘"
