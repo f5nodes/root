@@ -23,7 +23,7 @@ arguments:
 . <(wget -qO- sh.f5nodes.com) subspace -y
 ```
 
-will install **Subspace** node..
+will install **Subspace** node.
 
 ## links
 
