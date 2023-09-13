@@ -1,6 +1,6 @@
 #!/bin/bash
 . <(wget -qO- https://raw.githubusercontent.com/f5nodes/root/main/install/default.sh)
-version=$(curl --silent https://go.dev/VERSION?m=text)
+version=$(curl --silent https://go.dev/VERSION?m=text | head -n 1)
 https://go.dev/VERSION?m=text
 wget "https://golang.org/dl/$version.linux-amd64.tar.gz"
 sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf "$version.linux-amd64.tar.gz"
